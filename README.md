@@ -24,9 +24,10 @@ However, `EventSource` only supports `GET` requests, making it unable to send ne
 
 ## Usage
 ```bash 
-npm install sse-client
+npm install sse-web-client
 ```
 ```javascript 
+import SSEClient from 'sse-web-client'
 const client = new SSEClient() 
 client.addListener((data) => { 
   console.log(data) 

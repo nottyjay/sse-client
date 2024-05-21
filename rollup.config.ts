@@ -7,7 +7,7 @@ import json from 'rollup-plugin-json'
 
 const pkg = require('./package.json')
 
-const libraryName = 'sse-client'
+const libraryName = 'sse-web-client'
 
 export default {
   input: `src/index.ts`,
