@@ -4,18 +4,11 @@ import {processHeaders} from './type/header'
 
 import {transformRequest, bulidURL} from './utils'
 
-
-class SSEClient {
-  config: SSERequestConfig
+export default class SSEClient {
   error?: ErrorCallback
   singleCallback?: MessageCallback
   eventCallback?:{[event:string]: MessageCallback}
   utf8decoder:TextDecoder = new TextDecoder()
-
-
-  constructor(config: SSERequestConfig){
-    this.config = config
-  }
 
   async request(config: SSERequestConfig): Promise<void> {
     this.processConfig(config)
@@ -38,11 +31,11 @@ class SSEClient {
         }
         content = this.utf8decoder.decode(value)
         if(content !== ''){
-          var index = content.indexOf("\n\n");
-          if(index != -1){
-            var strs = content.substring(0, index).split("\n")
+          let index = content.indexOf("\n\n");
+          if(index !== -1){
+            let strs = content.substring(0, index).split("\n")
             content = content.substring(index+2)
-            if(strs.length == 2 && strs[0].indexOf('event') === 0){// 第一条是event事件
+            if(strs.length === 2 && strs[0].indexOf('event') === 0){// 第一条是event事件
               const regex = /event:(\w+)/; // 正则表达式，匹配以'event:'开头，后面跟着一个或多个字母数字的字符
 
               // 使用match方法
@@ -74,6 +67,15 @@ class SSEClient {
       }
 
     }
+  }
+
+  addEventListener(event:string, handler: MessageCallback){
+    this.eventCallback = this.eventCallback || {};
+    this.eventCallback[event] = handler
+  }
+
+  addListener(handler: MessageCallback) {
+    this.singleCallback = handler
   }
 
   processConfig (config: SSERequestConfig): void {

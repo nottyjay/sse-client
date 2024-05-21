@@ -1,14 +1,11 @@
-import DummyClass from "../src/sse-client"
+import SSEClient from "../src/index"
 
 /**
- * Dummy test
+ * SSEClient test
  */
-describe("Dummy test", () => {
-  it("works if true is truthy", () => {
-    expect(true).toBeTruthy()
-  })
+describe("SSEClient test", () => {
 
-  it("DummyClass is instantiable", () => {
-    expect(new DummyClass()).toBeInstanceOf(DummyClass)
+  it("SSEClient is instantiable", () => {
+    expect(new SSEClient()).toBeInstanceOf(SSEClient)
   })
 })
