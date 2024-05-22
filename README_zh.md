@@ -33,6 +33,11 @@ client.post({
   url: 'http://localhost/v1/chat/completions',
   data: {message: 'Hello!'}
 })
+// client.request({
+//   url: 'http://localhost/v1/chat/completions', 
+//   method: 'post',
+//   data: {message: 'Hello!'} 
+// })
 ```
 当需要处理Event时，可以使用
 ```javascript
@@ -44,4 +49,9 @@ client.post({
   url: 'http://localhost/v1/chat/completions',
   data: {message: 'Hello!'}
 })
+// client.request({
+//   url: 'http://localhost/v1/chat/completions', 
+//   method: 'post',
+//   data: {message: 'Hello!'} 
+// })
 ```

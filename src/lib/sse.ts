@@ -69,6 +69,16 @@ export default class SSEClient {
     }
   }
 
+  post(config: SSERequestConfig): Promise<void> {
+    config.method = 'post'
+    return this.request(config)
+  }
+
+  get(config: SSERequestConfig): Promise<void> {
+    config.method = 'get'
+    return this.request(config)
+  }
+
   addEventListener(event:string, handler: MessageCallback){
     this.eventCallback = this.eventCallback || {};
     this.eventCallback[event] = handler

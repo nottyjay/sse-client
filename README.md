@@ -36,6 +36,11 @@ client.post({
   url: 'http://localhost/v1/chat/completions', 
   data: {message: 'Hello!'} 
 })
+// client.request({
+//   url: 'http://localhost/v1/chat/completions', 
+//   method: 'post',
+//   data: {message: 'Hello!'} 
+// })
 ```
 When handling events, you can do the following:
 ```javascript
@@ -47,4 +52,9 @@ client.post({
   url: 'http://localhost/v1/chat/completions', 
   data: {message: 'Hello!'} 
 })
+// client.request({
+//   url: 'http://localhost/v1/chat/completions', 
+//   method: 'post',
+//   data: {message: 'Hello!'} 
+// })
 ```
