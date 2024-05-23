@@ -29,7 +29,7 @@ export default class SSEClient {
         if(done){
           break
         }
-        content = this.utf8decoder.decode(value)
+        content += this.utf8decoder.decode(value)
         if(content !== ''){
           let index = content.indexOf("\n\n");
           if(index !== -1){
