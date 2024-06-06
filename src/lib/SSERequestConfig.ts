@@ -5,5 +5,6 @@ export default interface SSERequestConfig {
   method?: Method,
   data?: any,
   params?: any,
-  headers?: any
+  headers?: any,
+  signal?: AbortSignal
 }
