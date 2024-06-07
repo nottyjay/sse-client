@@ -103,14 +103,14 @@ export default class SSEClient {
       for (let i = 0; i < size - 1; i++) {
         let strs = contents[i].split("\n")
         if (strs.length === 2 && strs[0].indexOf('event') === 0) {// 第一条是event事件
-          const regex = /event:(\w+)/; // 正则表达式，匹配以'event:'开头，后面跟着一个或多个字母数字的字符
+          const regex = /^event:(.*)$/; // 正则表达式，匹配以'event:'开头，后面跟着一个或多个字母数字的字符
 
           // 使用match方法
           const matchResult = strs[0].match(regex);
 
           if (matchResult) {
             const event: string = matchResult[1]; // 第一个括号中的内容会被捕获为一个分组，可以通过索引1获取
-            const regexData = /data:(.*)/;
+            const regexData = /^data:(.*)$/;
             const matchResultData = strs[1].match(regexData);
             if (matchResultData) {
               const data = matchResultData[1]
@@ -120,7 +120,7 @@ export default class SSEClient {
             console.log('No match found');
           }
         } else {
-          const regexData = /data:(\w+)/;
+          const regexData = /^data:(.*)$/;
           const matchResultData = strs[0].match(regexData);
           if (matchResultData) {
             const data = matchResultData[1]
